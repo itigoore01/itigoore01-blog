@@ -1,7 +1,11 @@
-import React from 'react';
-import { Link } from 'gatsby';
+import React, { FC } from 'react';
+import { Link, PageRendererProps } from 'gatsby';
 
-const Layout = ({ location, title, children }) => {
+interface Props extends PageRendererProps {
+  title: string;
+}
+
+const Layout: FC<Props> = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`;
   const isRootPath = location.pathname === rootPath;
   let header;
