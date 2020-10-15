@@ -14,6 +14,13 @@ module.exports = {
   plugins: [
     `gatsby-plugin-typegen`,
     {
+      resolve: `gatsby-plugin-gtag`,
+      options: {
+        trackingId: `G-YVY6SSXWYD`,
+        head: false,
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/blog`,
