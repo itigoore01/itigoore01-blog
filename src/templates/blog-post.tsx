@@ -4,6 +4,7 @@ import { Link, graphql, PageProps } from 'gatsby';
 import Bio from '../components/bio';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import ShareButtons from '../components/share-buttons';
 
 type Props = PageProps<
   GatsbyTypes.BlogPostBySlugQuery,
@@ -34,6 +35,7 @@ const BlogPostTemplate: FC<Props> = ({ data, pageContext, location }) => {
           dangerouslySetInnerHTML={{ __html: post?.html ?? '' }}
           itemProp="articleBody"
         />
+        <ShareButtons post={post!} />
         <hr />
         <footer>
           <Bio />
@@ -82,10 +84,14 @@ export const pageQuery = graphql`
       id
       excerpt(pruneLength: 160)
       html
+      fields {
+        slug
+      }
       frontmatter {
         title
         date(formatString: "YYYY-MM-DD")
         description
+        category
       }
     }
   }
