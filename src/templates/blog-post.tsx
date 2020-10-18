@@ -5,6 +5,7 @@ import Bio from '../components/bio';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import ShareButtons from '../components/share-buttons';
+import GatsbyImage from 'gatsby-image';
 
 type Props = PageProps<
   GatsbyTypes.BlogPostBySlugQuery,
@@ -16,26 +17,38 @@ const BlogPostTemplate: FC<Props> = ({ data, pageContext, location }) => {
   const siteTitle = data.site!.siteMetadata!.title ?? `Title`;
   const { previous, next } = pageContext;
 
+  const imagePath = post.frontmatter?.image?.publicURL;
+  const image = post.frontmatter?.image?.childImageSharp?.fluid;
+
   return (
     <Layout location={location} title={siteTitle}>
       <SEO
         title={post!.frontmatter!.title ?? ''}
         description={post.frontmatter!.description ?? post.excerpt}
+        image={imagePath}
       />
       <article
         className="blog-post"
         itemScope
-        itemType="http://schema.org/Article"
+        itemType="https://schema.org/BlogPosting"
       >
         <header>
           <h1 itemProp="headline">{post.frontmatter!.title}</h1>
           <p>{post.frontmatter!.date}</p>
+          {image && (
+            <div>
+              <GatsbyImage fluid={image} itemProp="image" />
+            </div>
+          )}
         </header>
         <section
           dangerouslySetInnerHTML={{ __html: post?.html ?? '' }}
           itemProp="articleBody"
         />
-        <ShareButtons post={post!} />
+        <ShareButtons
+          slug={post!.fields!.slug!}
+          title={post!.frontmatter!.title!}
+        />
         <hr />
         <footer>
           <Bio />
@@ -92,6 +105,14 @@ export const pageQuery = graphql`
         date(formatString: "YYYY-MM-DD")
         description
         category
+        image {
+          publicURL
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   }

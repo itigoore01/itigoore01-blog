@@ -15,19 +15,22 @@ interface Props {
   lang?: string;
   meta?: any[];
   title: string;
+  image?: string;
 }
 
-const SEO: FC<Props> = ({ description, lang, meta, title }) => {
-  const { site } = useStaticQuery<GatsbyTypes.SEOQuery>(
+const SEO: FC<Props> = ({ description, lang, meta = [], title, image }) => {
+  const { site } = useStaticQuery<GatsbyTypes.SeoQuery>(
     graphql`
-      query SEO {
+      query Seo {
         site {
           siteMetadata {
             title
+            siteUrl
             description
             social {
               twitter
             }
+            defaultImage
           }
         }
       }
@@ -36,6 +39,10 @@ const SEO: FC<Props> = ({ description, lang, meta, title }) => {
 
   const metaDescription = description || site!.siteMetadata!.description;
   const defaultTitle = site!.siteMetadata!.title;
+
+  const imageUrl = `${site!.siteMetadata!.siteUrl}${
+    image ?? site!.siteMetadata!.defaultImage
+  }`;
 
   return (
     <Helmet
@@ -62,6 +69,10 @@ const SEO: FC<Props> = ({ description, lang, meta, title }) => {
           content: `website`,
         },
         {
+          name: `og:image`,
+          content: imageUrl,
+        },
+        {
           name: `twitter:card`,
           content: `summary`,
         },
@@ -77,7 +88,11 @@ const SEO: FC<Props> = ({ description, lang, meta, title }) => {
           name: `twitter:description`,
           content: metaDescription,
         },
-      ].concat(meta ?? [])}
+        {
+          name: `twitter:image`,
+          content: imageUrl,
+        },
+      ].concat(meta)}
     />
   );
 };
@@ -93,6 +108,7 @@ SEO.propTypes = {
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
+  image: PropTypes.string,
 };
 
 export default SEO;

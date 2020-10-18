@@ -17,10 +17,11 @@ const Wrapper = styled.div`
 `;
 
 interface Props {
-  post: Pick<GatsbyTypes.MarkdownRemark, 'frontmatter' | 'fields'>;
+  slug: string;
+  title: string;
 }
 
-const ShareButtons: FC<Props> = ({ post }) => {
+const ShareButtons: FC<Props> = ({ slug, title: postTitle }) => {
   const data = useStaticQuery<GatsbyTypes.ShareQuery>(graphql`
     query Share {
       site {
@@ -35,10 +36,8 @@ const ShareButtons: FC<Props> = ({ post }) => {
     }
   `);
 
-  const url = `${data.site!.siteMetadata!.siteUrl}${post.fields!.slug}`;
-  const title = `${post.frontmatter!.title} | ${
-    data.site!.siteMetadata!.title
-  }`;
+  const url = `${data.site!.siteMetadata!.siteUrl}${slug}`;
+  const title = `${postTitle} | ${data.site!.siteMetadata!.title}`;
 
   const iconSize = 40;
 
