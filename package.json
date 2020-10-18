@@ -1,11 +1,11 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "itigoore01-blog",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "description": "Personal blog.",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "itigoore01 <xyz.shotao@gmail.com>",
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/itigoore01/itigoore01-blog/issues"
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.11.1",
@@ -45,7 +45,7 @@
     "@types/styled-components": "^5.1.4",
     "prettier": "2.1.1"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://github.com/itigoore01/itigoore01-blog",
   "keywords": [
     "gatsby"
   ],
