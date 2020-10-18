@@ -10,6 +10,7 @@ module.exports = {
     social: {
       twitter: `itigoore01`,
     },
+    defaultImage: `content/assets/avatar.png`,
   },
   plugins: [
     `gatsby-plugin-typegen`,
