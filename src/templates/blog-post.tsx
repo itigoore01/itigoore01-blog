@@ -36,9 +36,9 @@ const BlogPostTemplate: FC<Props> = ({ data, pageContext, location }) => {
           <h1 itemProp="headline">{post.frontmatter!.title}</h1>
           <p>{post.frontmatter!.date}</p>
           {image && (
-            <div>
+            <p>
               <GatsbyImage fluid={image} itemProp="image" />
-            </div>
+            </p>
           )}
         </header>
         <section
