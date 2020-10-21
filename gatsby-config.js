@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `BLOG_NAME_PLACEHOLDER`,
+    title: `shotaのブログ`,
     author: {
       name: `shota`,
       summary: `システムエンジニアのようなことをして暮らしています。`,
@@ -75,8 +75,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `BLOG_NAME_PLACEHOLDER`,
-        short_name: `BLOG_NAME_PLACEHOLDER`,
+        name: `shotaのブログ`,
+        short_name: `shotaのブログ`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
