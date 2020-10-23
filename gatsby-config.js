@@ -24,7 +24,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-adsense`,
       options: {
-        publisherId: `ca-pub-1974417205433740`
+        publisherId: `ca-pub-1974417205433740`,
       },
     },
     {
@@ -86,8 +86,8 @@ module.exports = {
     },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-twitter`,
-    `gatsby-plugin-styled-components`,
     `gatsby-plugin-sitemap`,
+    `gatsby-plugin-postcss`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

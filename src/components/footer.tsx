@@ -1,20 +1,25 @@
 import React, { FC } from 'react';
-import styled from 'styled-components';
 
-const FooterContent = styled.footer`
-  text-align: center;
-`;
+interface Props {
+  className: string;
+}
 
-const Footer: FC = () => {
+const Footer: FC<Props> = ({ className }) => {
   return (
-    <FooterContent>
-      <div>
-        <a href="https://github.com/itigoore01/itigoore01-blog" target="_new">
-          Source Code
-        </a>
+    <footer className={`container mx-auto px-4 ${className}`}>
+      <div className="flex flex-col text-center justify-center h-20 w-full text-gray-600 text-sm border-t border-gray-800">
+        <div>
+          <a
+            className="underline"
+            href="https://github.com/itigoore01/itigoore01-blog"
+            target="_new"
+          >
+            Source Code
+          </a>
+        </div>
+        <div>© {new Date().getFullYear()} shota</div>
       </div>
-      <div>© {new Date().getFullYear()} shota</div>
-    </FooterContent>
+    </footer>
   );
 };
 

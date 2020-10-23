@@ -5,11 +5,15 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
-import React from 'react';
+import React, { FC } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
 
-const Bio = () => {
+interface Props {
+  className?: string;
+}
+
+const Bio: FC<Props> = ({ className = '' }) => {
   const data = useStaticQuery<GatsbyTypes.BioQuery>(graphql`
     query Bio {
       avatar: file(absolutePath: { regex: "/avatar.png/" }) {
@@ -40,24 +44,25 @@ const Bio = () => {
   const avatar = data.avatar!.childImageSharp!.fixed;
 
   return (
-    <div className="bio">
+    <div className={`flex shadow-sm bg-gray-800 rounded-lg p-6 ${className}`}>
       {avatar && (
         <Image
           fixed={avatar}
           alt={author!.name || ``}
-          className="bio-avatar"
-          imgStyle={{
-            borderRadius: `50%`,
-          }}
+          className="mr-4 w-32 h-32 rounded-full"
         />
       )}
       {author?.name && (
-        <div>
-          <a href={`https://twitter.com/${social!.twitter}`} target="_new">
+        <div className="flex-1">
+          <a
+            className="text-base font-semibold"
+            href={`https://twitter.com/${social!.twitter}`}
+            target="_new"
+          >
             {author.name}
           </a>
 
-          <p>{author?.summary || null}</p>
+          <p className="text-sm">{author?.summary || null}</p>
         </div>
       )}
     </div>

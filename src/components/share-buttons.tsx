@@ -8,20 +8,18 @@ import {
   TwitterIcon,
   TwitterShareButton,
 } from 'react-share';
-import styled from 'styled-components';
-
-const Wrapper = styled.div`
-  .share-button {
-    margin: 0 4px;
-  }
-`;
 
 interface Props {
   slug: string;
   title: string;
+  className?: string;
 }
 
-const ShareButtons: FC<Props> = ({ slug, title: postTitle }) => {
+const ShareButtons: FC<Props> = ({
+  slug,
+  title: postTitle,
+  className = '',
+}) => {
   const data = useStaticQuery<GatsbyTypes.ShareQuery>(graphql`
     query Share {
       site {
@@ -42,22 +40,21 @@ const ShareButtons: FC<Props> = ({ slug, title: postTitle }) => {
   const iconSize = 40;
 
   return (
-    <Wrapper>
+    <div className={`space-x-2 ${className}`}>
       <TwitterShareButton
-        className="share-button"
         url={url}
         title={title}
         via={data.site!.siteMetadata!.social!.twitter}
       >
         <TwitterIcon size={iconSize} round />
       </TwitterShareButton>
-      <FacebookShareButton className="share-button" url={url}>
+      <FacebookShareButton url={url}>
         <FacebookIcon size={iconSize} round />
       </FacebookShareButton>
-      <HatenaShareButton className="share-button" url={url}>
+      <HatenaShareButton url={url}>
         <HatenaIcon size={iconSize} round />
       </HatenaShareButton>
-    </Wrapper>
+    </div>
   );
 };
 
