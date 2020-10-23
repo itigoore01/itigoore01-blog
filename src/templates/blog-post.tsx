@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Link, graphql, PageProps } from 'gatsby';
+import { graphql, PageProps } from 'gatsby';
 
 import Bio from '../components/bio';
 import Layout from '../components/layout';
@@ -12,10 +12,9 @@ type Props = PageProps<
   GatsbyTypes.MarkdownRemarkEdge
 >;
 
-const BlogPostTemplate: FC<Props> = ({ data, pageContext, location }) => {
+const BlogPostTemplate: FC<Props> = ({ data, location }) => {
   const post = data.markdownRemark!;
   const siteTitle = data.site!.siteMetadata!.title ?? `Title`;
-  const { previous, next } = pageContext;
 
   const imagePath = post.frontmatter?.image?.publicURL;
   const image = post.frontmatter?.image?.childImageSharp?.fluid;
@@ -27,59 +26,32 @@ const BlogPostTemplate: FC<Props> = ({ data, pageContext, location }) => {
         description={post.frontmatter!.description ?? post.excerpt}
         image={imagePath}
       />
-      <article
-        className="blog-post"
-        itemScope
-        itemType="https://schema.org/BlogPosting"
-      >
-        <header>
-          <h1 itemProp="headline">{post.frontmatter!.title}</h1>
-          <p>{post.frontmatter!.date}</p>
+      <article itemScope itemType="https://schema.org/BlogPosting">
+        <header className="py-4">
+          <h1 className="text-xl font-bold" itemProp="headline">
+            {post.frontmatter!.title}
+          </h1>
+          <time className="text-gray-500 text-sm">
+            {post.frontmatter!.date}
+          </time>
           {image && (
-            <p>
-              <GatsbyImage fluid={image} itemProp="image" />
-            </p>
+            <GatsbyImage fluid={image} itemProp="image" className="mt-4" />
           )}
         </header>
         <section
+          className="py-8 prose"
           dangerouslySetInnerHTML={{ __html: post?.html ?? '' }}
           itemProp="articleBody"
         />
         <ShareButtons
+          className="mb-8"
           slug={post!.fields!.slug!}
           title={post!.frontmatter!.title!}
         />
-        <hr />
         <footer>
           <Bio />
         </footer>
       </article>
-      <nav className="blog-post-nav">
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {previous?.fields!.slug && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter!.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next?.fields!.slug && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter!.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
-      </nav>
     </Layout>
   );
 };
@@ -95,7 +67,7 @@ export const pageQuery = graphql`
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
-      excerpt(pruneLength: 160)
+      excerpt(truncate: true, pruneLength: 160)
       html
       fields {
         slug
