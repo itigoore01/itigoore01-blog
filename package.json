@@ -47,7 +47,9 @@
   "devDependencies": {
     "@types/react-helmet": "^6.1.0",
     "prettier": "2.1.1",
-    "tailwindcss": "^1.9.5"
+    "tailwindcss": "^1.9.5",
+    "textlint": "^11.7.6",
+    "textlint-rule-preset-japanese": "^5.0.0"
   },
   "homepage": "https://github.com/itigoore01/itigoore01-blog",
   "keywords": [
