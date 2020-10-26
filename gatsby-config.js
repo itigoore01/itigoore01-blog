@@ -91,6 +91,7 @@ module.exports = {
       options: {
         feeds: [
           {
+            output: "/rss.xml",
             match: "^/blog/",
           }
         ],
