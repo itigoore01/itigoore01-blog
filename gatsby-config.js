@@ -86,7 +86,16 @@ module.exports = {
         },
       },
     },
-    `gatsby-plugin-feed`,
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        feeds: [
+          {
+            match: "^/blog/",
+          }
+        ],
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
