@@ -91,9 +91,28 @@ module.exports = {
       options: {
         feeds: [
           {
+            query: `
+              {
+                allMarkdownRemark(
+                  filter: { fields: { sourceName: { eq: "blog" } } }
+                  sort: { order: DESC, fields: [frontmatter___date] },
+                ) {
+                  edges {
+                    node {
+                      excerpt
+                      html
+                      fields { slug }
+                      frontmatter {
+                        title
+                        date
+                      }
+                    }
+                  }
+                }
+              }
+            `,
             output: "/rss.xml",
-            match: "^/blog/",
-          }
+          },
         ],
       },
     },
