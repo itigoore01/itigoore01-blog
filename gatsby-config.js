@@ -15,13 +15,6 @@ module.exports = {
   plugins: [
     `gatsby-plugin-typegen`,
     {
-      resolve: `gatsby-plugin-gtag`,
-      options: {
-        trackingId: `G-YVY6SSXWYD`,
-        head: false,
-      },
-    },
-    {
       resolve: `gatsby-plugin-google-adsense`,
       options: {
         publisherId: `ca-pub-1974417205433740`,
@@ -73,9 +66,16 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-google-gtag`,
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
+        trackingIds: [`G-YVY6SSXWYD`],
+        gtagConfig: {
+          anonymize_ip: true,
+        },
+        pluginConfig: {
+          head: false,
+          respectDNT: true,
+        },
       },
     },
     `gatsby-plugin-feed`,
