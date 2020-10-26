@@ -12,6 +12,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     `
       {
         allMarkdownRemark(
+          filter: { fields: { sourceName: { eq: "blog" } } }
           sort: { fields: [frontmatter___date], order: DESC }
           limit: 1000
         ) {
@@ -108,10 +109,12 @@ exports.createSchemaCustomization = ({ actions }) => {
       title: String
       description: String
       date: Date @dateformat
+      category: String
     }
 
     type Fields {
       slug: String
+      sourceName: String
     }
   `);
 };

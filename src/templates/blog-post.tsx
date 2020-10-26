@@ -65,7 +65,9 @@ export const pageQuery = graphql`
         title
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    markdownRemark(
+      fields: { slug: { eq: $slug }, sourceName: { eq: "blog" } }
+    ) {
       id
       excerpt(truncate: true, pruneLength: 160)
       html
