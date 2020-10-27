@@ -35,7 +35,13 @@ const BlogPostTemplate: FC<Props> = ({ data, location }) => {
             {post.frontmatter!.date}
           </time>
           {image && (
-            <GatsbyImage fluid={image} itemProp="image" className="mt-4" />
+            <GatsbyImage
+              fluid={image}
+              itemProp="image"
+              className="mt-4"
+              loading="eager"
+              durationFadeIn={100}
+            />
           )}
         </header>
         <section
@@ -83,7 +89,7 @@ export const pageQuery = graphql`
           publicURL
           childImageSharp {
             fluid {
-              ...GatsbyImageSharpFluid
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
         }
