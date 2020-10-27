@@ -136,6 +136,13 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: `https://itigoore01.dev`,
+        stripQueryString: true,
+      },
+    },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-twitter`,
     `gatsby-plugin-sitemap`,
