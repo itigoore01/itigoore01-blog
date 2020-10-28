@@ -1,4 +1,5 @@
 import { Link } from 'gatsby';
+import { OutboundLink } from 'gatsby-plugin-google-gtag';
 import React, { FC } from 'react';
 
 interface Props {
@@ -13,13 +14,13 @@ const Footer: FC<Props> = ({ className }) => {
           <Link to="/privacy-policy/" className="underline">
             プライバシーポリシー
           </Link>
-          <a
+          <OutboundLink
             className="underline"
             href="https://github.com/itigoore01/itigoore01-blog"
             target="_new"
           >
             Source Code
-          </a>
+          </OutboundLink>
         </div>
         <div>© {new Date().getFullYear()} shota</div>
       </div>
