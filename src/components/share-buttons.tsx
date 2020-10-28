@@ -8,6 +8,7 @@ import {
   TwitterIcon,
   TwitterShareButton,
 } from 'react-share';
+import { sendShareEvent } from '../utils/gtag/share-event';
 
 interface Props {
   slug: string;
@@ -39,19 +40,28 @@ const ShareButtons: FC<Props> = ({
 
   const iconSize = 40;
 
+  function onShareClick(media: string) {
+    sendShareEvent({
+      method: media,
+      contentType: 'post',
+      contentId: slug,
+    });
+  }
+
   return (
     <div className={`space-x-2 ${className}`}>
       <TwitterShareButton
         url={url}
         title={title}
         via={data.site!.siteMetadata!.social!.twitter}
+        onClick={() => onShareClick('Twitter')}
       >
         <TwitterIcon size={iconSize} round />
       </TwitterShareButton>
-      <FacebookShareButton url={url}>
+      <FacebookShareButton url={url} onClick={() => onShareClick('Facebook')}>
         <FacebookIcon size={iconSize} round />
       </FacebookShareButton>
-      <HatenaShareButton url={url}>
+      <HatenaShareButton url={url} onClick={() => onShareClick('Hatena')}>
         <HatenaIcon size={iconSize} round />
       </HatenaShareButton>
     </div>
