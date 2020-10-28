@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 body {
-  @apply bg-gray-900 text-white break-words;
+  @apply bg-black text-white break-words;
 }

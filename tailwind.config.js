@@ -8,6 +8,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Noto Sans JP'],
+        display: ['Montserrat'],
       },
     },
     typography: (theme) => ({

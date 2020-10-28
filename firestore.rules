@@ -1,0 +1,17 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+  	match /post-likes/{slug} {
+    	allow read: if true
+      allow write: if validatePostLikes(request.resource.data) && request.resource.data.count == 0
+      allow update: if validatePostLikes(request.resource.data) && request.resource.data.count > resource.data.count
+    }
+  }
+  
+  function validatePostLikes(postLike) {
+  	return
+    	postLike.size() <= 1 &&
+    	postLike.count is number &&
+    	postLike.count >= 0;
+  }
+}
