@@ -156,6 +156,21 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: `gatsby-plugin-firebase`,
+      options: {
+        credentials: {
+          apiKey: `AIzaSyAEoCvZmbODazWmeajBdY2KDUQt-fgUOfI`,
+          authDomain: `itigoore01-dev.firebaseapp.com`,
+          databaseURL: `https://itigoore01-dev.firebaseio.com`,
+          projectId: `itigoore01-dev`,
+          storageBucket: `itigoore01-dev.appspot.com`,
+          messagingSenderId: `190639829291`,
+          appId: `1:190639829291:web:44fb87aa9cb5ea2eefd56e`,
+          measurementId: `G-BF4PZ4TN1G`,
+        },
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     `gatsby-plugin-offline`,

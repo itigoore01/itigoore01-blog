@@ -49,21 +49,24 @@ const ShareButtons: FC<Props> = ({
   }
 
   return (
-    <div className={`space-x-2 ${className}`}>
-      <TwitterShareButton
-        url={url}
-        title={title}
-        via={data.site!.siteMetadata!.social!.twitter}
-        onClick={() => onShareClick('Twitter')}
-      >
-        <TwitterIcon size={iconSize} round />
-      </TwitterShareButton>
-      <FacebookShareButton url={url} onClick={() => onShareClick('Facebook')}>
-        <FacebookIcon size={iconSize} round />
-      </FacebookShareButton>
-      <HatenaShareButton url={url} onClick={() => onShareClick('Hatena')}>
-        <HatenaIcon size={iconSize} round />
-      </HatenaShareButton>
+    <div className={`flex flex-col text-center items-center ${className}`}>
+      <div className="font-extrabold text-2xl mb-2 font-display">SHARE</div>
+      <div className="space-x-4">
+        <TwitterShareButton
+          url={url}
+          title={title}
+          via={data.site!.siteMetadata!.social!.twitter}
+          onClick={() => onShareClick('Twitter')}
+        >
+          <TwitterIcon size={iconSize} round />
+        </TwitterShareButton>
+        <FacebookShareButton url={url} onClick={() => onShareClick('Facebook')}>
+          <FacebookIcon size={iconSize} round />
+        </FacebookShareButton>
+        <HatenaShareButton url={url} onClick={() => onShareClick('Hatena')}>
+          <HatenaIcon size={iconSize} round />
+        </HatenaShareButton>
+      </div>
     </div>
   );
 };

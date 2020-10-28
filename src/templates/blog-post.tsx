@@ -6,6 +6,7 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 import ShareButtons from '../components/share-buttons';
 import GatsbyImage from 'gatsby-image';
+import LikeButton from '../components/like-button';
 
 type Props = PageProps<
   GatsbyTypes.BlogPostBySlugQuery,
@@ -49,11 +50,14 @@ const BlogPostTemplate: FC<Props> = ({ data, location }) => {
           dangerouslySetInnerHTML={{ __html: post?.html ?? '' }}
           itemProp="articleBody"
         />
-        <ShareButtons
-          className="mb-8"
-          slug={post!.fields!.slug!}
-          title={post!.frontmatter!.title!}
-        />
+
+        <div className="flex flex-col text-center space-y-4 mb-8">
+          <LikeButton slug={post!.fields!.slug!} />
+          <ShareButtons
+            slug={post!.fields!.slug!}
+            title={post!.frontmatter!.title!}
+          />
+        </div>
         <footer>
           <Bio />
         </footer>
