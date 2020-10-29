@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, MouseEvent } from 'react';
 import { usePostLikes } from '../hooks/use-post-likes';
 import { sendLikeEvent } from '../utils/gtag/like-event';
 import classNames from 'classnames';
@@ -32,7 +32,10 @@ const LikeButton: FC<Props> = ({ slug, className = '' }) => {
         <br className="sm:hidden" />
         いいねをたくさん送れます
       </p>
-      <button className="text-red-600" onClick={onLikeClick}>
+      <button
+        className="focus:outline-none transition-transform duration-200 ease-out transform hover:scale-110 hover:-translate-y-1"
+        onClick={onLikeClick}
+      >
         <svg
           width="40"
           height="40"

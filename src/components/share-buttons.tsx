@@ -63,13 +63,22 @@ const ShareButtons: FC<Props> = ({
           title={title}
           via={data.site!.siteMetadata!.social!.twitter}
           onClick={() => onShareClick('Twitter')}
+          className="transition-transform duration-200 ease-out transform hover:scale-110 hover:-translate-y-1"
         >
           <TwitterIcon size={iconSize} round />
         </TwitterShareButton>
-        <FacebookShareButton url={url} onClick={() => onShareClick('Facebook')}>
+        <FacebookShareButton
+          url={url}
+          onClick={() => onShareClick('Facebook')}
+          className="transition-transform duration-200 ease-out transform hover:scale-110 hover:-translate-y-1"
+        >
           <FacebookIcon size={iconSize} round />
         </FacebookShareButton>
-        <HatenaShareButton url={url} onClick={() => onShareClick('Hatena')}>
+        <HatenaShareButton
+          url={url}
+          onClick={() => onShareClick('Hatena')}
+          className="transition-transform duration-200 ease-out transform hover:scale-110 hover:-translate-y-1"
+        >
           <HatenaIcon size={iconSize} round />
         </HatenaShareButton>
       </div>
