@@ -8,6 +8,7 @@
 import React, { FC } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
+import classNames from 'classnames';
 
 interface Props {
   className?: string;
@@ -44,7 +45,12 @@ const Bio: FC<Props> = ({ className = '' }) => {
   const avatar = data.avatar!.childImageSharp!.fixed;
 
   return (
-    <div className={`flex shadow-sm bg-gray-800 rounded-lg p-6 ${className}`}>
+    <div
+      className={classNames(
+        'flex shadow-sm bg-gray-800 rounded-lg p-6',
+        className
+      )}
+    >
       {avatar && (
         <Image
           fixed={avatar}

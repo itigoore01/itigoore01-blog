@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { usePostLikes } from '../hooks/use-post-likes';
 import { sendLikeEvent } from '../utils/gtag/like-event';
+import classNames from 'classnames';
 
 interface Props {
   slug: string;
@@ -19,7 +20,12 @@ const LikeButton: FC<Props> = ({ slug, className = '' }) => {
   }
 
   return (
-    <div className={`flex flex-col text-center items-center ${className}`}>
+    <div
+      className={classNames(
+        'flex flex-col text-center items-center',
+        className
+      )}
+    >
       <div className="font-black text-2xl mb-1 font-display">LIKE</div>
       <p className="text-sm text-gray-600 mb-2">
         ブックマーク機能はないですが
