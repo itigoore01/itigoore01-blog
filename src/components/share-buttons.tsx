@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { graphql, useStaticQuery } from 'gatsby';
 import React, { FC } from 'react';
 import {
@@ -49,7 +50,12 @@ const ShareButtons: FC<Props> = ({
   }
 
   return (
-    <div className={`flex flex-col text-center items-center ${className}`}>
+    <div
+      className={classNames(
+        'flex flex-col text-center items-center',
+        className
+      )}
+    >
       <div className="font-extrabold text-2xl mb-2 font-display">SHARE</div>
       <div className="space-x-4">
         <TwitterShareButton
