@@ -1,5 +1,5 @@
 ---
-title: ひぐらしのなく頃に業 鬼騙し編 第3話についての雑記
+title: ひぐらしのなく頃に業 鬼騙し編 第3話についての考察や雑記
 date: '2020-10-18T14:25:35.445Z'
 category: higurashi
 image: ./og-image.jpg
