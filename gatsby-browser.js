@@ -1,6 +1,6 @@
 // custom typefaces
-import 'fontsource-noto-sans-jp';
-import 'fontsource-noto-sans-jp/700.css';
+import 'fontsource-montserrat';
+import 'fontsource-montserrat/700-normal.css';
 import 'fontsource-montserrat/900-normal.css';
 
 // custom CSS styles
