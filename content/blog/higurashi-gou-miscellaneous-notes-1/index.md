@@ -1,5 +1,5 @@
 ---
-title: ひぐらしのなく頃に業 第1、2話についての雑記
+title: ひぐらしのなく頃に業 第1、2話についての考察や雑記
 date: '2020-10-14T13:32:34.811Z'
 category: higurashi
 image: ./og-image.png

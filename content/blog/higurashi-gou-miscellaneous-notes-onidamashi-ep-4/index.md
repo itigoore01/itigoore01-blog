@@ -1,5 +1,5 @@
 ---
-title: ひぐらしのなく頃に業 鬼騙し編 第4話についての雑記
+title: ひぐらしのなく頃に業 鬼騙し編 第4話についての考察や雑記
 date: '2020-10-24T13:49:15.939Z'
 category: higurashi
 image: ./og-image.jpg
