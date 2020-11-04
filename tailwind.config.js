@@ -9,14 +9,24 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Noto Sans JP'],
-        display: ['Montserrat'],
+        sans: [
+          '"Montserrat"',
+          '"游ゴシック"',
+          'YuGothic',
+          '"ヒラギノ角ゴ ProN W3"',
+          '"Hiragino Kaku Gothic ProN"',
+          '"メイリオ"',
+          'Meiryo',
+          'sans-serif',
+        ],
+        display: ['Montserrat', 'sans-serif'],
       },
     },
     typography: (theme) => ({
       default: {
         css: {
           color: theme('colors.white'),
+          maxWidth: null,
           a: {
             color: theme('colors.blue.500'),
             textDecoration: 'none',
